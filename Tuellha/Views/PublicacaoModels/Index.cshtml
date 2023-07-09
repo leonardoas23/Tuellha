@@ -1,0 +1,32 @@
+﻿@model IEnumerable<Tuellha.Models.PublicacaoModel>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-4">
+                    <!-- Hero image -->
+                    <img src="data:image/png;base64, @item.ToBase64()" class="img-fluid">
+                </div>
+                <div class="col-md-8">
+                    <!-- Publicação details -->
+                    <h4>@Html.DisplayFor(modelItem => item.Titulo)</h4>
+                    <p>@Html.DisplayFor(modelItem => item.Conteudo)</p>
+                    <p>@Html.DisplayFor(modelItem => item.Data)</p>
+                    <p>
+                        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    </p>
+                </div>
+            </div>
+            <hr />
+        </div>
+    }
+</div>
+
